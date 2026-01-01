@@ -1,0 +1,221 @@
+Phase 0 — Target & Objective
+
+Purpose: Prevent basic logic change
+
+Task 0.1 - Write Down Objective Of CRM (1 word sentence)
+ - To track internal company quotations and win rate
+
+Task 0.2 - List down Out of scopes
+ - No setting of user authorization
+ - No do quotation automation
+ - No domain, no open to public
+
+Remark:
+The purpose of this CRM is for tracking of sales quotation activities only. 
+To present business analysis (quotation) effectiveness to management for continuous improvement.
+
+
+Phase 1 — Data set and status design
+
+Task 1.1 — List down all data to be collected/recorded
+
+ 1. Project Title (Standardize project title formula)
+    - Project Title Name > Site Address
+ 2. Company Name
+ 3. Quotation No
+ 4. Quotation Version (revision_no)
+ 5. Quotation Status
+ 6. Date
+ 7. Validity end date (Default 30 days)
+
+Task 1.2 — Define Quotation Revision Rules
+
+ 1. In which situation build new quotation - New project or new company or new quotation Version
+ 2. In which situation to change status - Receive PO, receive feedback of awarded to others or product unmatch
+ 3. Allow to delete quotation - No (This is a part of sales KPI)
+
+Task 1.3 — Define status
+
+ 1. Quotation sent (Quotation sent out to client)
+ 2. Waiting for PO (client request for site visit/client disclose/shop drawings approve)
+ 3. Win 
+ 4. Lose (State Reason Of Lose)
+ 5. Cancelled (Received PO but Cancelled job)
+
+
+Phase 2 — dataset definitation
+
+Task 2.1
+
+Transform all data collected as in phase 1 into dataset
+
+
+Task 2.2 Confirm relationship
+
+quotation → project
+
+quotation → company
+
+Task 2.3 Added below keyword
+
+ - quotation.is_latest
+ - quotation.revision_no
+ - quotation.created_at
+ - quotation.updated_at
+
+Task 2.4 Explain revise quotation
+
+ - Revision of quotation can be due to few reason:
+  1. Sales quotation wrong
+  2. Specs / Design change
+  3. Request discount
+
+
+Phase 3 — Webpage Structure Planning 
+
+Task 3.1 — Listdown the webpages title
+ - Dashboard (Present Monthly Data, Allow links to transfer)
+ - New Quotation (Where we fill up new quotation)
+ - Project Quick View (Allow transform to created quotation & edit status)
+ - Quotation History
+
+
+Task 3.2 — Define Function Of each webpages
+ - Dashboard (Present Monthly Data, Allow links to transfer)
+ - New Quotation (Where we fill up new quotation)
+ - Project Quick View (Allow link to created quotation & edit status)
+ - Quotation History (View only)
+
+
+Task 3.3 — Design landing page logic
+
+Dashboard → Made up of 4 parts
+    1. Quotation History - Include a link to add new+
+    2. Project Quick View
+    3. Collections of current month (quotation amount - win rate - high deals etc)
+
+log:
+    - Combine New quotation with quotation history
+
+Phase 4 — HTML 表单（销售录入核心，1 天）
+Task 4.1
+
+写「新 Quotation 表单」字段顺序
+
+project（选择）
+
+company（选择）
+
+quotation_no（输入）
+
+items（textarea）
+
+quoted_price
+
+status（dropdown）
+
+Task 4.2
+
+明确哪些字段：
+
+必填
+
+自动生成
+
+不能修改
+
+Task 4.3
+
+手画（或简单 HTML）表单布局
+
+不追求美观，只追求可用
+
+📌 日志记录点：
+
+哪些字段 sales 可能填错
+
+Phase 5 — Quotation Revision 流程（核心功能，1 天）
+Task 5.1
+
+写出「Revise 按钮」点击后发生的 5 件事（文字）
+
+Task 5.2
+
+明确旧 quotation 的变化
+
+status
+
+is_latest
+
+Task 5.3
+
+明确新 quotation 的初始状态
+
+Task 5.4
+
+决定是否允许：
+
+回退 revision
+
+删除 revision
+
+📌 日志记录点：
+
+revision 是否会给 sales 带来混乱
+
+Phase 6 — Dashboard 指标定义（为 Power BI 铺路，0.5 天）
+Task 6.1
+
+列出你 一定要看到 的 5 个指标
+
+不考虑技术
+
+Task 6.2
+
+为每个指标写：
+
+所需字段
+
+计算逻辑（文字）
+
+Task 6.3
+
+判断哪些字段现在就必须存
+
+📌 日志记录点：
+
+哪些指标现在做不到，为什么
+
+Phase 7 — 技术落地顺序（避免一次写太多，0.5 天）
+Task 7.1
+
+决定开发顺序（只能选一个起点）：
+
+A. 先数据库
+
+B. 先 HTML
+
+C. 先后端 API
+
+Task 7.2
+
+写下你选择这个顺序的理由
+
+📌 日志记录点：
+
+是否考虑过替代方案
+
+Phase 8 — 复盘与下一迭代（持续）
+Task 8.1
+
+每完成一个 Phase，回答 3 个问题：
+
+哪里卡住
+
+哪个设计是对的
+
+哪个决定可能是错的
+
+Task 8.2
+
+记录「如果重来一次，我会怎么做」
