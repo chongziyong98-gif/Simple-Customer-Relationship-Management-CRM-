@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Quotation</title>
+</head>
+<body>
+    <h2>Update Quotation {{ quotation.quotation_no }}</h2>
+
+    <p>
+        Company: {{ quotation.company_name }} <br>
+        Project: {{ quotation.project }} <br>
+        Price: {{ quotation.quoted_price }} <br>
+        Status: {{ quotation.status }}
+    </p>
+
+    <form method="post">
+        Company:
+        <input type="text" name="company_name" value="{{ quotation.company_name }}">
+
+        Project:
+        <input type="text" name="project" value="{{ quotation.project }}">
+
+        Price:
+        <input type="number" name="quoted_price" value="{{ quotation.quoted_price }}">
+
+        Status:
+        <input type="text" name="status" value="{{ quotation.status }}">
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

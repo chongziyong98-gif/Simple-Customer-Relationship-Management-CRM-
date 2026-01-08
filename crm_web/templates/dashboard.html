@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<header>
+  <h1>Quotation Dashboard</h1>
+</header>
+
+<section class = "filters">
+  <div class="filter-links">
+    <strong>Filter:</strong>
+    <a href="{{ url_for('dashboard') }}">All</a> |
+    <a href="{{ url_for('dashboard', status='draft') }}">Draft</a> |
+    <a href="{{ url_for('dashboard', status='pending') }}">Pending</a> |
+    <a href="{{ url_for('dashboard', status='won') }}">Won</a>
+  </div>
+  <form method="get">
+  <select name="status">
+    <option value="">All</option>
+    <option value="open">Open</option>
+    <option value="won">Won</option>
+    <option value="lose">Lose</option>
+  </select>
+
+  <input type="date" name="start_date">
+  <input type="date" name="end_date">
+
+  <button type="submit">Filter</button>
+  </form>
+</section>
+
+<p class="view-hint">Showing: {{ view_label }}</p>
+
+
+<section class="kpi-section">
+  <div class="kpi-grid">
+    <p class="kpi info">Total Quotations: {{ kpis.total_count }}</p>
+    <p class="kpi info">Total Value: {{ kpis.total_value }}</p>
+
+    <p class="kpi success">Won Value: {{ kpis.won_value }}</p>
+    <p class="kpi success">Win Rate: {{ kpis.win_rate }}%</p>
+
+    <p class="kpi info">Avg Closing Days: {{ kpis.avg_closing_days }}</p>
+
+    <p class="kpi danger">Aging Quotations: {{ kpis.aging_count }}</p>
+  </div>
+</section>
+
+<a href="{{ url_for('add_quotation') }}">Add New Quotation</a>
+
+<section class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Quotation No</th>
+        <th>Company</th>
+        <th>Project</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Open Date</th>
+        <th>Close Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for q in quotations %}
+      <tr>
+        <td>{{ q.quotation_no }}</td>
+        <td>{{ q.company_name }}</td>
+        <td>{{ q.project }}</td>
+        <td>{{ q.quoted_price }}</td>
+        <td class="status {{ q.status }}">
+          {{ q.status }}
+        </td>
+        <td>{{ q.open_date }}</td>
+        <td>{{ q.close_date }}</td>
+        <td>
+          <a href="{{ url_for('update_quotation', quotation_no=q.quotation_no) }}">
+            Update
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</section>
+
+
+
+</body>
+</html>

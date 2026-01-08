@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 24px;
+  background: #f5f7fa;
+  color: #1f2933;
+}
+
+a {
+  text-decoration: none;
+  color: #2563eb;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-links a {
+  margin-right: 12px;
+  font-weight: 500;
+}
+
+.filter-form {
+  display: flex;
+  gap: 8px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.kpi-grid p {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.table-wrapper {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+.kpi {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-left: 6px solid transparent;
+}
+
+/* Neutral */
+.kpi.info {
+  border-left-color: #3b82f6;
+}
+
+/* Positive */
+.kpi.success {
+  border-left-color: #10b981;
+}
+
+/* Risk */
+.kpi.danger {
+  border-left-color: #ef4444;
+}
+
+.status {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Won */
+.status.won {
+  color: #065f46;
+}
+
+/* Pending / Draft */
+.status.pending,
+.status.draft {
+  color: #92400e;
+}
+
+/* Lose */
+.status.lose {
+  color: #991b1b;
+}
+
+td:nth-child(4) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.view-hint {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
