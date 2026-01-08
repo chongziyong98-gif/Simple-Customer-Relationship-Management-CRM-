@@ -41,7 +41,6 @@ Designed for internal sales teams to:
 ## Setup Instructions
 
 ### 1. Clone repository
-```bash
 git clone <repo_url>
 cd Simple-Customer-Relationship-Management-CRM
 
